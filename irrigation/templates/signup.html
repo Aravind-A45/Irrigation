@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="flex justify-center items-center h-screen">
+    <div class="col-md-6 mt-1">
+      <div class="bg-white p-4 shadow-md rounded w-80">
+          <h1 class="text-center mb-4 text-2xl font-bold">Signup</h1>
+          <form method="POST">
+              {% csrf_token %}
+              <div class="mb-4">
+                <input type="text" class="w-full px-4 py-2 border rounded mt-2" id="username" name="username" required>
+                <label class="text-gray-700">Username</label>    
+              </div>
+              <div class="mb-4">
+                <input type="password" name="password" required class="w-full px-4 py-2 border rounded mt-2">
+                <label class="text-gray-700">Password</label>
+              </div>
+              <div class="mb-4">
+                <input type="password" name="con_password" required class="w-full px-4 py-2 border rounded mt-2">
+                <label class="text-gray-700">Confirm Password</label>
+              </div>
+              <div class="mb-4">
+                Already have an account? <a href="{% url 'login' %}" class="text-blue-500">Login</a>
+              </div>
+              <div class="text-center">
+                  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Signup</button>
+              </div>
+              <div class="message mt-3">
+                  {% for message in messages %}
+                  <p>{{ message }}</p>
+                  {% endfor %}
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
